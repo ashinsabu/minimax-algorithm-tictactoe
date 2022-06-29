@@ -2,12 +2,20 @@
 
 const gameBoard = (() => {
     const boardArray = Array(9)
+
     const getField = (n) => boardArray[n];
+
     const setField = (n,player) => { 
         boardArray[n] = player.getSign();
     }
 
-    return ({getField,setField});
+    const clear = () => {
+        for (let i = 0; i < boardArray.length; i++) {
+            boardArray[i] = undefined;
+        }
+    }
+
+    return ({getField,setField,clear});
 })();
 
 const Player = (sign) => {
@@ -22,8 +30,23 @@ const Player = (sign) => {
     }
 }
 
-const player1 = Player('x');
-gameBoard.setField(1,player1);
+const gameController = (() => {
+    const player1 = Player ('X');
+    const player2 = Player ('O');
+
+})();
+
+const displayController = (() => {
+
+    const fieldDivs = document.querySelectorAll(".field");
+    const fillBoard = () => {
+        for(let i=0;i<9;i++){
+            fieldDivs[i].innerHTML = gameBoard.getField(i);
+        }
+    }
+})();
+
+
 console.log(gameBoard.getField(1));
 
 
