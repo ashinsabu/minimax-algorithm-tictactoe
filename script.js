@@ -33,21 +33,50 @@ const Player = (sign) => {
 const gameController = (() => {
     const player1 = Player ('X');
     const player2 = Player ('O');
+    let round = 1;
+    let gameOver = false;
+    const playRound = (fieldIndex) => {
+        gameBoard.setField(fieldIndex,getCurrentPlayer());
+        round++;
+    }
+    const getCurrentPlayer= () => {
+        return round % 2 === 1 ? player1: player2;
+      };
+    const getGameOver = () => gameOver;
+    const getRound = () => round;
+
+    
+    return( {playRound,getCurrentPlayer,getGameOver,getRound} );
 
 })();
 
 const displayController = (() => {
 
     const fieldDivs = document.querySelectorAll(".field");
+
+    fieldDivs.forEach((fieldDiv,index) => {
+        
+        fieldDiv.addEventListener('click',(e) => {
+            if (gameController.getGameOver() || e.target.innerHTML !== "") return;
+            gameController.playRound(index);
+            fillBoard();
+        })
+    })
+
     const fillBoard = () => {
         for(let i=0;i<9;i++){
-            fieldDivs[i].innerHTML = gameBoard.getField(i);
+            if(gameBoard.getField(i)!=undefined)
+                fieldDivs[i].innerHTML = gameBoard.getField(i);
+            else
+                fieldDivs[i].innerHTML="";
         }
     }
+
+    return ({fillBoard});
 })();
 
-
-console.log(gameBoard.getField(1));
+gameController.playRound(0);
+displayController.fillBoard();
 
 
 

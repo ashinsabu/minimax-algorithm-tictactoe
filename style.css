@@ -49,7 +49,18 @@ body{
 }
 
 .field{
+    cursor: pointer;
     background-color: white;
     padding: 16px;
+    width: 32px;
     font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.field:hover{
+    background-color: aliceblue;
+}
+.footer{
+    margin-top: 64px;
 }
