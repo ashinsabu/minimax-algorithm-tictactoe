@@ -19,13 +19,71 @@ a{
 }
 
 body{
-    background-color: rgb(241,241,241);
+    background-color: #EFE6E9;
     padding: 64px;
+    
 }
 
+#choosegamemode-title{
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.449);
+    margin: 24px;
+}
 
+.choose-gamemode{
+    margin: 16px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+   
+}
+.gamemode-selector-area{
+    text-align: center;
+    opacity: 1;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+.gamemode-selector-area.invisible{
+    transform: scale(3);
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.gamemode{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #EFE6E9;
+    box-shadow: 0px 0px 10px 2px #7a7a7a26;
+    transition: transform 0.3s ease-in-out;
+    color: rgba(0, 0, 0, 0.536);
+    font-weight: bold;
+}
+.gamemode:hover{
+    transform: scale(1.05);
+}
+.playertype-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-
+.playertype-container > p{
+    font-size: 18px;
+    font-weight: bold;
+    color: grey;
+}
+.gamemodeimage{
+    height: 128px;
+}
+.pvp2{
+    transform: scaleX(-1);
+}
+.pvai{
+    transform: scaleX(-1);
+}
 .card{
     background-color: white;
     display: flex;
@@ -34,6 +92,10 @@ body{
     border-radius: 10px;
     overflow: hidden;
     padding: 32px;
+    height: fit-content;
+    
+    width: 80%;
+    margin: auto;
     box-shadow: -1px 7px 22px -6px lightgrey;
 }
 .card >h1{
@@ -46,12 +108,18 @@ body{
     gap: 4px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    transition: transform 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+.board-container.invisible{    
+    transform: scale(0);
+    height: 0;
 }
 
 .field{
     cursor: pointer;
     background-color: white;
     padding: 16px;
+    height: 32px;
     width: 32px;
     font-size: 28px;
     display: flex;

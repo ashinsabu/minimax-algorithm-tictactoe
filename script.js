@@ -51,13 +51,25 @@ const gameController = (() => {
 })();
 
 const displayController = (() => {
+    const gamemodes = document.querySelectorAll('.gamemode');
+
+    gamemodes.forEach((gamemode) => {
+        gamemode.addEventListener('click',() => {
+
+            const gamemodeselector = document.querySelector('.gamemode-selector-area');
+            gamemodeselector.classList.add('invisible');
+            const boardContainer = document.querySelector('.board-container');
+            boardContainer.classList.remove('invisible');
+
+        })
+    })
 
     const fieldDivs = document.querySelectorAll(".field");
 
     fieldDivs.forEach((fieldDiv,index) => {
         
         fieldDiv.addEventListener('click',(e) => {
-            if (gameController.getGameOver() || e.target.innerHTML !== "") return;
+            if (gameController.getGameOver() || e.target.innerHTML !== " ") return;
             gameController.playRound(index);
             fillBoard();
         })
@@ -68,14 +80,14 @@ const displayController = (() => {
             if(gameBoard.getField(i)!=undefined)
                 fieldDivs[i].innerHTML = gameBoard.getField(i);
             else
-                fieldDivs[i].innerHTML="";
+                fieldDivs[i].innerHTML=" ";
         }
     }
 
     return ({fillBoard});
 })();
 
-gameController.playRound(0);
+// gameController.playRound(0);
 displayController.fillBoard();
 
 

@@ -10,7 +10,38 @@
 <body>
     <div class="card">
         <h1>Tic Tac Toe</h1>
-        <div class="board-container">
+        <div class="gamemode-selector-area">
+            <h3 id="choosegamemode-title">Choose your gamemode</h3>
+            <div class="choose-gamemode">
+                <div class="gamemode playervsplayer">
+                    <div class="playertype-container">
+                        <img src="assets/person.gif" class="gamemodeimage">
+                        <p>Player</p>
+                    </div>
+                        Vs.
+                    <div class="playertype-container">
+                        <img src="assets/person.gif" class="gamemodeimage pvp2">
+                        <p>Player</p>
+                    </div>
+                    
+                </div>
+                <div class="gamemode playervsai">
+                    <div class="playertype-container">
+                        <img src="assets/person.gif" class="gamemodeimage">
+                        <p>Player</p>
+                    </div>
+                        Vs.
+                    <div class="playertype-container">
+                        <img src="assets/robot.gif" class="gamemodeimage pvai">
+                        <p>AI</p>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="message"></div>
+        <div class="board-container invisible">
             <div class="field f0">X</div>
             <div class="field f1">O</div>
             <div class="field f2"></div>
