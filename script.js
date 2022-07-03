@@ -39,13 +39,24 @@ const gameController = (() => {
         gameBoard.setField(fieldIndex,getCurrentPlayer());
         round++;
     }
-    const getCurrentPlayer= () => {
+    const getCurrentPlayer = () => {
         return round % 2 === 1 ? player1: player2;
       };
     const getGameOver = () => gameOver;
     const getRound = () => round;
 
-    
+    const checkCols = () =>{
+        if(gameBoard.getField(0) == gameBoard.getField(3) && gameBoard.getField(3) == gameBoard.getField(6) && gameBoard.getField(0)!=undefined)
+            return true;
+        if(gameBoard.getField(1) == gameBoard.getField(4) && gameBoard.getField(4) == gameBoard.getField(7) && gameBoard.getField(1)!=undefined)
+            return true;
+        if(gameBoard.getField(2) == gameBoard.getField(5) && gameBoard.getField(5) == gameBoard.getField(8) && gameBoard.getField(3)!=undefined)
+            return true;
+    }
+
+    const checkGameOver = () => {
+
+    }
     return( {playRound,getCurrentPlayer,getGameOver,getRound} );
 
 })();
