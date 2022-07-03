@@ -101,6 +101,12 @@ body{
 .card >h1{
     font-weight: bold;
 }
+.message{
+    color: grey;
+    margin-top: 8px;
+    border-radius: 5px;
+    font-size: 20px;
+}
 .board-container{
     margin-top: 32px;
     background-color: black;
