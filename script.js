@@ -8,6 +8,7 @@ const gameBoard = (() => {
     const setField = (n,player) => { 
         boardArray[n] = player.getSign();
     }
+    
 
     const clear = () => {
         for (let i = 0; i < boardArray.length; i++) {
@@ -30,13 +31,18 @@ const Player = (sign) => {
     }
 }
 
+const resetbutton = document.querySelector('.reset-button');
+resetbutton.addEventListener('click',() => {
+    gameController.resetGame();
+    resetbutton.classList.add('invisible');
+})
 const gameController = (() => {
     const player1 = Player ('X');
     const player2 = Player ('O');
     let round = 1;
     let gameOver = false;
     const messagearea = document.querySelector('.message');
-
+    
     const playRound = (fieldIndex) => {
         gameBoard.setField(fieldIndex,getCurrentPlayer());
         messagearea.innerHTML= (getCurrentPlayer()==player1 ? "Player O's turn":"Player X's turn");
@@ -46,13 +52,27 @@ const gameController = (() => {
                 messagearea.innerHTML = "It's a draw.";
                 messagearea.style.color = "orange";
                 gameOver=true;
+                resetbutton.classList.remove('invisible');
             }
             else{
                 messagearea.innerHTML = "Player " + checkGameOver() + " wins!";
                 messagearea.style.color = "blue";
                 gameOver=true;
+                resetbutton.classList.remove('invisible');
             }
         }
+    }
+    const resetGame = () => {
+        console.log("game reset");
+        round = 1;
+        gameOver=false;
+        gameBoard.clear();
+        displayController.fillBoard();
+        messagearea.style.color = "grey";
+        messagearea.innerHTML = "Player X's turn";
+        // for(let i=0;i<9;i++){
+        //     gameBoard.setField(i,undefined);
+        // }
     }
     const getCurrentPlayer = () => {
         return round % 2 === 1 ? player1: player2;
@@ -110,7 +130,7 @@ const gameController = (() => {
             return ("Draw");
         else return (" ");
     }
-    return( {playRound,getCurrentPlayer,getGameOver,getRound} );
+    return( {playRound,getCurrentPlayer,getGameOver,getRound,resetGame} );
 
 })();
 
