@@ -156,6 +156,38 @@ body{
     transform: scale(0);
     visibility: hidden;
 }
+
+.pvai-sign-choose{
+    display: flex;
+    gap: 8px;
+    transition: visibility 0.5s ease-in-out, opacity 0.2s ease-in;
+}
+.pvai-sign-choose.invisible{
+    visibility: hidden;
+    opacity: 0;
+}
+.pvai-sign-choose button{
+    margin-top: 16px;
+    cursor: pointer;
+    width: 128px;
+    height: 32px;
+    font-weight: bold;
+    border-radius: 10px;
+    outline: none;
+    border: transparent;
+    background-color: rgba(128, 128, 128, 0.603);
+    color: rgba(0, 0, 0, 0.651);
+    
+}
+
+.xbutton:hover , .obutton:hover{
+    transform: scale(1.03);
+}
+.xbutton.active ,
+.obutton.active{
+    border: 2px solid black;
+}
+
 .footer{
     margin-top: 64px;
 }
