@@ -140,7 +140,7 @@ const gameController = (() => {
             console.log(checkDiags() + "winbydiag");
             return checkDiags();
         }
-        else if(round==10)
+        else if(round>=10)
             return ("Draw");
         else return (" ");
     }
