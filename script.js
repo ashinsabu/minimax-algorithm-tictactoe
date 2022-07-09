@@ -46,7 +46,8 @@ const gameController = (() => {
     let gameOver = false;
     const messagearea = document.querySelector('.message');
     
-    //TODO: Option for player to switch symbols when 
+    //TODO: Option for player to switch symbols when playing
+    //TODO: More UI
     const playRound = (fieldIndex) => {
         gameBoard.setField(fieldIndex,getCurrentPlayer());
         messagearea.innerHTML= (getCurrentPlayer()==player1 ? "Player O's turn":"Player X's turn");
